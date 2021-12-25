@@ -9,11 +9,15 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'AzureFreesubscription(3c5d8c9c-8551-4f43-b202-847f7cc85f74)'
+    subscriptionId: '3c5d8c9c-8551-4f43-b202-847f7cc85f74'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'azpipelinetest'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/DrealDidihttps://github.com/DrealDidi/aztest/blob/main/deploytest/aztest/blhttps://github.com/DrealDidi/aztest/blob/main/deploylinkedob/main/deploytest'
+    deploymentMode: 'Incremental'
+    deploymentName: 'aztestpiepline'
